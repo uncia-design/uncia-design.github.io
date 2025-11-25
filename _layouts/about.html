@@ -1,0 +1,478 @@
+---
+layout: default
+---
+
+<article class="about-page">
+  {% if page.header %}
+    {% include page__hero.html %}
+  {% endif %}
+
+  <div class="container">
+    <!-- Team Introduction -->
+    <section class="about-section intro-section">
+      <div class="section-content">
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="lead">{{ page.subtitle }}</p>
+        {% endif %}
+        
+        {% if content %}
+        {{ content }}
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Team Members -->
+    {% if page.team_members %}
+    <section class="about-section team-section" style="background-color: #f5f5f5;">
+      <h2>Meet the Team</h2>
+      
+      <div class="team-grid">
+        {% for member in page.team_members %}
+        <div class="team-member">
+          {% if member.image %}
+          <div class="member-image">
+            <img src="{{ member.image | relative_url }}" alt="{{ member.name }}" loading="lazy">
+          </div>
+          {% endif %}
+
+          <div class="member-content">
+            <h3>{{ member.name }}</h3>
+            {% if member.role %}
+            <p class="member-role">{{ member.role }}</p>
+            {% endif %}
+
+            {% if member.bio %}
+            <p class="member-bio">{{ member.bio }}</p>
+            {% endif %}
+
+            {% if member.credentials %}
+            <div class="member-credentials">
+              <strong>Credentials:</strong>
+              <ul>
+                {% for credential in member.credentials %}
+                <li>{{ credential }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+
+            {% if member.expertise %}
+            <div class="member-expertise">
+              <strong>Expertise:</strong>
+              <div class="expertise-tags">
+                {% for skill in member.expertise %}
+                <span class="tag">{{ skill }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+
+            {% if member.social %}
+            <div class="member-social">
+              {% for social in member.social %}
+              <a href="{{ social.url }}" title="{{ social.platform }}" class="social-link">
+                {{ social.platform }}
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Our Philosophy / Approach -->
+    {% if page.philosophy %}
+    <section class="about-section philosophy-section">
+      <h2>Our Philosophy</h2>
+      
+      {% for item in page.philosophy %}
+      <div class="philosophy-item">
+        {% if item.title %}
+        <h3>{{ item.title }}</h3>
+        {% endif %}
+        <p>{{ item.description }}</p>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <!-- Core Values -->
+    {% if page.values %}
+    <section class="about-section values-section" style="background-color: #f5f5f5;">
+      <h2>Core Values</h2>
+      
+      <div class="values-grid">
+        {% for value in page.values %}
+        <div class="value-card">
+          {% if value.icon %}
+          <div class="value-icon">{{ value.icon }}</div>
+          {% endif %}
+          <h3>{{ value.title }}</h3>
+          <p>{{ value.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Process Overview -->
+    {% if page.process %}
+    <section class="about-section process-section">
+      <h2>How We Work</h2>
+      
+      <div class="process-overview">
+        {% for step in page.process %}
+        <div class="process-step">
+          <div class="step-number">{{ forloop.index }}</div>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Statistics / Impact -->
+    {% if page.stats %}
+    <section class="about-section stats-section" style="background-color: #f5f5f5;">
+      <h2>By The Numbers</h2>
+      
+      <div class="stats-grid">
+        {% for stat in page.stats %}
+        <div class="stat-item">
+          <div class="stat-number">{{ stat.number }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+          {% if stat.description %}
+          <p class="stat-description">{{ stat.description }}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Testimonials -->
+    {% if page.testimonials %}
+    <section class="about-section testimonials-section">
+      <h2>What People Say</h2>
+      
+      <div class="testimonials-list">
+        {% for testimonial in page.testimonials %}
+        {% include testimonial.html 
+          quote=testimonial.quote 
+          author=testimonial.author 
+          location=testimonial.location
+          image=testimonial.image
+          rating=testimonial.rating
+        %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- CTA -->
+    <section class="about-section cta-section">
+      <div class="cta-box">
+        <h2>Let's Work Together</h2>
+        <p>Ready to bring your vision to life with expert design and data-driven insights?</p>
+        <a href="/contact" class="btn btn--large">Get In Touch</a>
+      </div>
+    </section>
+  </div>
+</article>
+
+<style>
+  .about-page {
+    .section-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  }
+
+  .about-section {
+    padding: 3rem 2rem;
+    margin: 0;
+    border-bottom: 1px solid #e8e8e8;
+
+    @media (max-width: 768px) {
+      padding: 2rem 1rem;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .team-member {
+    background-color: white;
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 10px 30px rgba(26, 26, 26, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .member-image {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      background-color: #f5f5f5;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .member-content {
+      padding: 2rem;
+
+      h3 {
+        margin-bottom: 0.5rem;
+      }
+
+      .member-role {
+        font-size: 0.95rem;
+        color: #d4a373;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+      }
+
+      .member-bio {
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .member-credentials {
+        margin-bottom: 1.5rem;
+
+        strong {
+          display: block;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 0.5rem;
+          color: #333;
+        }
+
+        ul {
+          list-style: none;
+          padding-left: 1rem;
+          margin: 0;
+
+          li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            color: #666;
+
+            &::before {
+              content: '•';
+              margin-right: 0.75rem;
+              color: #d4a373;
+            }
+          }
+        }
+      }
+
+      .member-expertise {
+        margin-bottom: 1.5rem;
+
+        strong {
+          display: block;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 0.75rem;
+          color: #333;
+        }
+
+        .expertise-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+
+          .tag {
+            background-color: #d4a373;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .member-social {
+        display: flex;
+        gap: 1rem;
+
+        .social-link {
+          font-size: 0.9rem;
+          color: #d4a373;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #1a1a1a;
+          }
+        }
+      }
+    }
+  }
+
+  .philosophy-item {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e8e8e8;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.8;
+    }
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .value-card {
+    background-color: white;
+    padding: 2rem;
+    border: 1px solid #e8e8e8;
+    text-align: center;
+
+    .value-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+
+  .process-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .process-step {
+    text-align: center;
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background-color: #d4a373;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin: 0 auto 1rem;
+    }
+
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .stat-item {
+    text-align: center;
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #d4a373;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-weight: 600;
+      color: #1a1a1a;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-description {
+      font-size: 0.85rem;
+      color: #666;
+    }
+  }
+
+  .cta-box {
+    background-color: #f5f5f5;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-left: 4px solid #d4a373;
+
+    h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      font-size: 1.125rem;
+    }
+
+    @media (max-width: 768px) {
+      padding: 2rem 1rem;
+    }
+  }
+</style>

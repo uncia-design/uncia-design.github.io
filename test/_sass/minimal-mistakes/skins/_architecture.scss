@@ -1,0 +1,62 @@
+/* Architecture skin copied from root for test site */
+
+/* Colors */
+$primary-color: #1a1a1a !default;           // Deep charcoal
+$primary-color-light: #333333 !default;     // Lighter charcoal for hover
+$primary-color-dark: #0d0d0d !default;      // Darker charcoal for active
+$accent-color: #d4a373 !default;            // Warm gold accent
+$accent-color-light: #e8c9a0 !default;      // Lighter accent
+$accent-color-dark: #c09563 !default;       // Darker accent
+$success-color: #2ecc71 !default;           // Green for positive ROI
+$warning-color: #f39c12 !default;           // Orange for caution
+$background-color: #ffffff !default;        // White background
+$light-gray: #f5f5f5 !default;              // Light gray for sections
+$lighter-gray: #e8e8e8 !default;            // Very light gray for borders
+$text-color: #1a1a1a !default;              // Primary text
+$text-color-light: #666666 !default;        // Secondary text
+$text-color-lighter: #999999 !default;      // Tertiary text
+$border-color: #e8e8e8 !default;            // Subtle borders
+$muted-text-color: #999999 !default;        // Metadata/small text
+
+/* Masonry & Grid */
+$grid-gap: 2rem !default;                   // Gap between grid items
+$grid-gap-mobile: 1rem !default;            // Mobile grid gap
+$hero-height: 80vh !default;                // Hero section height
+$hero-height-mobile: 60vh !default;         // Mobile hero height
+
+/* Spacing - Vertical Rhythm */
+$section-spacing: 3rem !default;            // Large section spacing
+$section-spacing-mobile: 1.5rem !default;   // Mobile section spacing
+$component-spacing: 2rem !default;          // Component spacing
+
+/* Typography */
+$base-font-size: 1rem !default;             // 16px
+$base-line-height: 1.6 !default;
+$heading-font-weight: 600 !default;
+$heading-font-weight-bold: 700 !default;
+$h1-size: 2.5rem !default;                  // 40px
+$h2-size: 2rem !default;                    // 32px
+$h3-size: 1.5rem !default;                  // 24px
+$h4-size: 1.25rem !default;                 // 20px
+$h5-size: 1.125rem !default;                // 18px
+$h6-size: 1rem !default;                    // 16px
+$small-size: 0.875rem !default;             // 14px
+
+/* Breakpoints */
+$small-screen: 600px !default;
+$medium-screen: 768px !default;
+$large-screen: 1024px !default;
+$xlarge-screen: 1440px !default;
+
+/* Minimal, non-exhaustive skin so the test site compiles */
+body { color: $text-color; background-color: $background-color; }
+
+h1 { font-size: $h1-size; font-weight: $heading-font-weight-bold; }
+h2 { font-size: $h2-size; }
+
+a { color: $primary-color; }
+
+.btn { background-color: $primary-color; color: $background-color; padding: 0.75rem 1.5rem; }
+
+// small utilities
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }

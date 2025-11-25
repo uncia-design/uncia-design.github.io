@@ -1,0 +1,400 @@
+<!-- ROI Calculator Component -->
+<!-- Usage: {% include roi-calculator.html %} or {% include roi-calculator.html project_type="ADU" %} -->
+
+<div class="roi-calculator" id="roiCalculator">
+  <div class="calculator-inputs">
+    <div class="form-group">
+      <label for="propertyValue">Home/Property Value ($)</label>
+      <input 
+        type="number" 
+        id="propertyValue" 
+        placeholder="e.g., 500,000"
+        min="0"
+        step="10000"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="projectCost">Project Cost ($)</label>
+      <input 
+        type="number" 
+        id="projectCost" 
+        placeholder="e.g., 150,000"
+        min="0"
+        step="10000"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="monthlyIncome">Monthly Income/Savings ($)</label>
+      <input 
+        type="number" 
+        id="monthlyIncome" 
+        placeholder="e.g., 2,500"
+        min="0"
+        step="100"
+      >
+    </div>
+
+    {% if include.project_type == 'ADU' or include.project_type == 'adu' %}
+    <div class="form-group">
+      <label for="vacancyRate">Vacancy Rate (%)</label>
+      <input 
+        type="number" 
+        id="vacancyRate" 
+        placeholder="e.g., 5"
+        min="0"
+        max="100"
+        step="1"
+        value="5"
+      >
+    </div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="propertyValueIncrease">Property Value Increase (%) <span class="text-muted">(optional)</span></label>
+      <input 
+        type="number" 
+        id="propertyValueIncrease" 
+        placeholder="e.g., 5"
+        min="0"
+        max="100"
+        step="0.1"
+        value="5"
+      >
+    </div>
+
+    <button class="btn calculator-button" id="calculateBtn">Calculate ROI</button>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <div class="result-item">
+      <span class="result-label">Annual Income/Savings</span>
+      <span class="result-value" id="annualIncome">$0</span>
+    </div>
+
+    <div class="result-item">
+      <span class="result-label">Property Value Increase</span>
+      <span class="result-value" id="valueIncrease">$0</span>
+    </div>
+
+    <div class="result-item">
+      <span class="result-label">Total Annual Return</span>
+      <span class="result-value" id="totalReturn">$0</span>
+    </div>
+
+    <div class="result-item">
+      <span class="result-label">ROI %</span>
+      <span class="result-value" id="roiPercent">0%</span>
+    </div>
+
+    <div class="result-item" id="breakEvenItem">
+      <span class="result-label">Years to Break Even</span>
+      <span class="result-value" id="breakEven">--</span>
+    </div>
+
+    <div class="result-item">
+      <span class="result-label">5-Year Projection</span>
+      <span class="result-value" id="fiveYearReturn">$0</span>
+    </div>
+
+    <div class="result-item">
+      <span class="result-label">10-Year Projection</span>
+      <span class="result-value" id="tenYearReturn">$0</span>
+    </div>
+
+    <div class="result-actions">
+      <button class="btn btn--secondary" id="printBtn">Print Results</button>
+      <button class="btn btn--secondary" id="emailBtn">Email Results</button>
+      <a href="/contact?project_type=ROI%20Consultation" class="btn">Schedule Consultation</a>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <p class="text-muted">
+      <strong>Disclaimer:</strong> These calculations are estimates based on the information provided. 
+      Actual returns may vary based on market conditions, property location, and other factors. 
+      Please consult with a financial advisor for detailed projections.
+    </p>
+  </div>
+</div>
+
+<script>
+(function() {
+  const calculator = document.getElementById('roiCalculator');
+  if (!calculator) return;
+
+  const propertyValue = document.getElementById('propertyValue');
+  const projectCost = document.getElementById('projectCost');
+  const monthlyIncome = document.getElementById('monthlyIncome');
+  const vacancyRate = document.getElementById('vacancyRate');
+  const propertyValueIncrease = document.getElementById('propertyValueIncrease');
+  const calculateBtn = document.getElementById('calculateBtn');
+  const resultsDiv = document.getElementById('results');
+
+  const resultElements = {
+    annualIncome: document.getElementById('annualIncome'),
+    valueIncrease: document.getElementById('valueIncrease'),
+    totalReturn: document.getElementById('totalReturn'),
+    roiPercent: document.getElementById('roiPercent'),
+    breakEven: document.getElementById('breakEven'),
+    fiveYearReturn: document.getElementById('fiveYearReturn'),
+    tenYearReturn: document.getElementById('tenYearReturn')
+  };
+
+  function formatCurrency(value) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function calculateROI() {
+    const propValue = parseFloat(propertyValue.value) || 0;
+    const cost = parseFloat(projectCost.value) || 0;
+    const monthly = parseFloat(monthlyIncome.value) || 0;
+    const vacancy = vacancyRate ? (parseFloat(vacancyRate.value) || 0) / 100 : 0;
+    const valueIncrease = (parseFloat(propertyValueIncrease.value) || 0) / 100;
+
+    // Calculate annual income after vacancy
+    const annualIncome = monthly * 12 * (1 - vacancy);
+    
+    // Calculate property value increase
+    const valueIncreaseAmount = propValue * valueIncrease;
+    
+    // Total annual return
+    const totalReturn = annualIncome + valueIncreaseAmount;
+    
+    // ROI percentage
+    const roi = cost > 0 ? (totalReturn / cost) * 100 : 0;
+    
+    // Break even
+    const breakEven = annualIncome > 0 ? cost / annualIncome : Infinity;
+    
+    // Projections
+    const fiveYearReturn = (annualIncome * 5) + (valueIncreaseAmount * 5);
+    const tenYearReturn = (annualIncome * 10) + (valueIncreaseAmount * 10);
+
+    // Update results
+    resultElements.annualIncome.textContent = formatCurrency(annualIncome);
+    resultElements.valueIncrease.textContent = formatCurrency(valueIncreaseAmount);
+    resultElements.totalReturn.textContent = formatCurrency(totalReturn);
+    resultElements.roiPercent.textContent = roi.toFixed(1) + '%';
+    
+    if (breakEven === Infinity) {
+      resultElements.breakEven.textContent = 'N/A';
+      document.getElementById('breakEvenItem').classList.add('warning');
+    } else {
+      resultElements.breakEven.textContent = breakEven.toFixed(2) + ' years';
+      document.getElementById('breakEvenItem').classList.remove('warning');
+    }
+    
+    resultElements.fiveYearReturn.textContent = formatCurrency(fiveYearReturn);
+    resultElements.tenYearReturn.textContent = formatCurrency(tenYearReturn);
+
+    // Show results
+    resultsDiv.style.display = 'block';
+    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // Store for print/email
+    window.roiResults = {
+      propertyValue: propValue,
+      projectCost: cost,
+      monthlyIncome: monthly,
+      vacancyRate: vacancy * 100,
+      annualIncome: annualIncome,
+      valueIncreaseAmount: valueIncreaseAmount,
+      totalReturn: totalReturn,
+      roi: roi,
+      breakEven: breakEven,
+      fiveYearReturn: fiveYearReturn,
+      tenYearReturn: tenYearReturn,
+      calculatedAt: new Date().toLocaleDateString()
+    };
+  }
+
+  calculateBtn.addEventListener('click', calculateROI);
+
+  // Allow Enter key to calculate
+  [propertyValue, projectCost, monthlyIncome, propertyValueIncrease].forEach(input => {
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') calculateROI();
+    });
+  });
+
+  // Print functionality
+  document.getElementById('printBtn').addEventListener('click', () => {
+    const results = window.roiResults;
+    const printWindow = window.open('', '', 'height=600,width=800');
+    
+    printWindow.document.write(`
+      <html>
+      <head>
+        <title>ROI Calculation Results</title>
+        <style>
+          body { font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; }
+          h1 { color: #1a1a1a; }
+          .result { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #e8e8e8; }
+          .result-label { font-weight: 600; }
+          .result-value { color: #d4a373; font-weight: 600; }
+          .disclaimer { font-size: 0.85rem; color: #666; margin-top: 2rem; font-style: italic; }
+        </style>
+      </head>
+      <body>
+        <h1>ROI Calculation Results</h1>
+        <p><strong>Calculated:</strong> ${results.calculatedAt}</p>
+        
+        <h3>Investment Summary</h3>
+        <div class="result">
+          <span class="result-label">Property Value:</span>
+          <span class="result-value">$${results.propertyValue.toLocaleString()}</span>
+        </div>
+        <div class="result">
+          <span class="result-label">Project Cost:</span>
+          <span class="result-value">$${results.projectCost.toLocaleString()}</span>
+        </div>
+        <div class="result">
+          <span class="result-label">Monthly Income:</span>
+          <span class="result-value">$${(results.monthlyIncome * (1 - results.vacancyRate/100)).toLocaleString()}</span>
+        </div>
+        
+        <h3>Returns</h3>
+        <div class="result">
+          <span class="result-label">Annual Income:</span>
+          <span class="result-value">$${results.annualIncome.toLocaleString()}</span>
+        </div>
+        <div class="result">
+          <span class="result-label">Annual ROI:</span>
+          <span class="result-value">${results.roi.toFixed(1)}%</span>
+        </div>
+        <div class="result">
+          <span class="result-label">Break-Even:</span>
+          <span class="result-value">${results.breakEven.toFixed(2)} years</span>
+        </div>
+        <div class="result">
+          <span class="result-label">5-Year Projection:</span>
+          <span class="result-value">$${results.fiveYearReturn.toLocaleString()}</span>
+        </div>
+        <div class="result">
+          <span class="result-label">10-Year Projection:</span>
+          <span class="result-value">$${results.tenYearReturn.toLocaleString()}</span>
+        </div>
+        
+        <p class="disclaimer">
+          These calculations are estimates. Actual returns may vary. Please consult with a financial advisor.
+        </p>
+      </body>
+      </html>
+    `);
+    
+    printWindow.document.close();
+    printWindow.print();
+  });
+
+  // Email functionality
+  document.getElementById('emailBtn').addEventListener('click', () => {
+    const results = window.roiResults;
+    const subject = encodeURIComponent('My ROI Calculation Results');
+    const body = encodeURIComponent(`
+ROI Calculation Results
+Calculated: ${results.calculatedAt}
+
+Investment Summary:
+- Property Value: $${results.propertyValue.toLocaleString()}
+- Project Cost: $${results.projectCost.toLocaleString()}
+
+Returns:
+- Annual Income: $${results.annualIncome.toLocaleString()}
+- Annual ROI: ${results.roi.toFixed(1)}%
+- Break-Even Period: ${results.breakEven.toFixed(2)} years
+- 5-Year Projection: $${results.fiveYearReturn.toLocaleString()}
+- 10-Year Projection: $${results.tenYearReturn.toLocaleString()}
+
+Note: These are estimates. Consult a financial advisor for detailed projections.
+    `);
+    
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  });
+})();
+</script>
+
+<style>
+  .roi-calculator {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: 0;
+    margin: 2rem 0;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+  }
+
+  .calculator-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+
+      .text-muted {
+        font-weight: 400;
+        color: #999;
+        text-transform: none;
+        letter-spacing: normal;
+      }
+    }
+
+    input {
+      padding: 0.75rem;
+      border: 1px solid #e8e8e8;
+      background-color: white;
+      color: #1a1a1a;
+      font-size: 1rem;
+      border-radius: 0;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #d4a373;
+        box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.1);
+      }
+
+      &::placeholder {
+        color: #ccc;
+      }
+    }
+  }
+
+  .calculator-button {
+    grid-column: 1 / -1;
+    align-self: flex-end;
+
+    @media (max-width: 768px) {
+      grid-column: 1 / -1;
+      align-self: auto;
+    }
+  }
+
+  .calculator-results {
+    background-color: white;
+    padding: 2rem;
+    border: 1px solid #e8e8e8;

@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
-# use local theme gem for testing
-gem "minimal-mistakes-jekyll", path: "../"
+# use the published theme gem for testing (fallback when local gemspec is not present)
+# If you prefer to test against the local repo, replace this line with: gem "minimal-mistakes-jekyll", path: ".."
+gem "minimal-mistakes-jekyll"
 group :jekyll_plugins do
   gem 'jekyll-algolia', '~> 1.0'
 end

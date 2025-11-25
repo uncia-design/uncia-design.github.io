@@ -1,0 +1,212 @@
+---
+layout: default
+---
+
+<article class="service-page" itemscope itemtype="https://schema.org/Service">
+  {% if page.header %}
+    {% include page__hero.html %}
+  {% endif %}
+
+  <div class="service-container">
+    <div class="container">
+      <!-- Service Overview -->
+      <section class="service-section overview-section">
+        <div class="service-content">
+          <h1 itemprop="name headline">{{ page.title }}</h1>
+          
+          {% if page.description %}
+          <p class="lead" itemprop="description">{{ page.description }}</p>
+          {% endif %}
+
+          {% if page.content %}
+          <div class="service-overview">
+            {{ content }}
+          </div>
+          {% endif %}
+        </div>
+      </section>
+
+      <!-- Service Features/Benefits -->
+      {% if page.features %}
+      <section class="service-section features-section" style="background-color: #f5f5f5;">
+        <h2>Why Choose Us</h2>
+        <div class="features-grid">
+          {% for feature in page.features %}
+          <div class="feature-item">
+            {% if feature.icon %}
+            <div class="feature-icon">{{ feature.icon }}</div>
+            {% endif %}
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Service Calculator/Tool -->
+      {% if page.show_calculator %}
+      <section class="service-section calculator-section">
+        <h2>{{ page.calculator_title | default: "Calculate Your Project" }}</h2>
+        
+        {% case page.calculator_type %}
+          {% when 'roi' %}
+            {% include roi-calculator.html %}
+          {% when 'cost' %}
+            {% include cost-calculator.html %}
+          {% when 'timeline' %}
+            {% include timeline-calculator.html %}
+          {% else %}
+            {% include roi-calculator.html %}
+        {% endcase %}
+      </section>
+      {% endif %}
+
+      <!-- Case Studies / Examples -->
+      {% if page.case_studies %}
+      <section class="service-section case-studies-section" style="background-color: #f5f5f5;">
+        <h2>Case Studies</h2>
+        
+        <div class="case-studies-grid">
+          {% for case_study_title in page.case_studies %}
+            {% assign case_study = site.projects | where: "title", case_study_title | first %}
+            {% if case_study %}
+            <div class="case-study-card">
+              <div class="case-study-image" style="background-image: url('{{ case_study.hero_image | relative_url }}');"></div>
+              
+              <div class="case-study-content">
+                <h3>{{ case_study.title }}</h3>
+                
+                <div class="case-study-meta">
+                  <div class="meta-item">
+                    <span class="label">Location</span>
+                    <span class="value">{{ case_study.location }}</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="label">Investment</span>
+                    <span class="value">{{ case_study.budget }}</span>
+                  </div>
+                  {% if case_study.roi_increase %}
+                  <div class="meta-item">
+                    <span class="label">ROI</span>
+                    <span class="value">{{ case_study.roi_increase }}</span>
+                  </div>
+                  {% endif %}
+                </div>
+
+                <a href="{{ case_study.url | relative_url }}" class="btn btn--secondary">
+                  View Full Case Study →
+                </a>
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Process Steps -->
+      {% if page.process %}
+      <section class="service-section process-section">
+        <h2>Our Process</h2>
+        
+        <div class="process-timeline">
+          {% for step in page.process %}
+          <div class="process-item">
+            <div class="process-number">{{ forloop.index }}</div>
+            <div class="process-content">
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Testimonials -->
+      {% if page.testimonials %}
+      <section class="service-section testimonials-section" style="background-color: #f5f5f5;">
+        <h2>Client Testimonials</h2>
+        
+        <div class="testimonials-list">
+          {% for testimonial in page.testimonials %}
+          {% include testimonial.html 
+            quote=testimonial.quote 
+            author=testimonial.author 
+            location=testimonial.location
+            image=testimonial.image
+            rating=testimonial.rating
+          %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Service Pricing / Options -->
+      {% if page.pricing %}
+      <section class="service-section pricing-section">
+        <h2>Service Options</h2>
+        
+        <div class="pricing-grid">
+          {% for option in page.pricing %}
+          <div class="pricing-card">
+            <h3>{{ option.title }}</h3>
+            {% if option.price %}
+            <div class="pricing-price">{{ option.price }}</div>
+            {% endif %}
+            
+            {% if option.description %}
+            <p>{{ option.description }}</p>
+            {% endif %}
+
+            {% if option.features %}
+            <ul class="pricing-features">
+              {% for feature in option.features %}
+              <li>{{ feature }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            <a href="/contact?service={{ page.title | url_encode }}&package={{ option.title | url_encode }}" class="btn">
+              Get Started
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- FAQ Section -->
+      {% if page.faqs %}
+      <section class="service-section faq-section" style="background-color: #f5f5f5;">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-list">
+          {% for faq in page.faqs %}
+          <details class="faq-item">
+            <summary>{{ faq.question }}</summary>
+            <p>{{ faq.answer }}</p>
+          </details>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- CTA Section -->
+      <section class="service-section cta-section">
+        <div class="cta-box">
+          <h2>Ready to Get Started?</h2>
+          {% if page.cta_subtitle %}
+          <p>{{ page.cta_subtitle }}</p>
+          {% else %}
+          <p>Let's discuss how our {{ page.title | downcase }} service can help you achieve your goals.</p>
+          {% endif %}
+          <a href="/contact?service={{ page.title | url_encode }}" class="btn btn--large">
+            Schedule a Consultation
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,179 @@
+---
+layout: compress
+---
+
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 | default: 'en' }}">
+  <head>
+    {% include head.html %}
+  </head>
+
+  <body class="layout--home-portfolio">
+    {% include skip-links.html %}
+    {% include masthead.html %}
+
+    <div class="initial-content">
+      <!-- Hero Section -->
+      <section class="page__hero page__hero--home"{% if page.header.image %} style="background-image: url('{{ page.header.image | relative_url }}');"{% endif %}>
+        <div class="page__hero-content">
+          {% if page.header.title %}
+            <h1>{{ page.header.title }}</h1>
+          {% endif %}
+          
+          {% if page.header.subtitle %}
+            <p>{{ page.header.subtitle }}</p>
+          {% endif %}
+
+          {% if page.header.cta %}
+            <a href="{{ page.header.cta.url | relative_url }}" class="btn btn--large">
+              {{ page.header.cta.text }}
+            </a>
+          {% endif %}
+        </div>
+      </section>
+
+      <!-- Featured Projects Section -->
+      {% if page.featured_projects %}
+      <section class="section featured-projects">
+        <div class="container">
+          <h2 class="text-center">Featured Projects</h2>
+          
+          <div class="projects-grid projects-grid--featured">
+            {% for project in page.featured_projects %}
+              {% assign item = site.projects | where: "title", project | first %}
+              {% if item %}
+              <div class="project-card" style="background-image: url('{{ item.hero_image | relative_url }}');">
+                <div class="project-card__content">
+                  <h3>{{ item.title }}</h3>
+                  <p class="metadata">
+                    <span class="project-type">{{ item.typology }}</span> • 
+                    <span class="project-location">{{ item.location }}</span>
+                  </p>
+                </div>
+                <a href="{{ item.url | relative_url }}" class="project-card__link"></a>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          {% if page.featured_projects_link %}
+          <div class="text-center" style="margin-top: 2rem;">
+            <a href="{{ page.featured_projects_link | relative_url }}" class="btn">
+              View All Projects
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Services Section -->
+      {% if page.services %}
+      <section class="section services-section" style="background-color: var(--light-gray, #f5f5f5);">
+        <div class="container">
+          <h2 class="text-center mb-section">Our Services</h2>
+          
+          <div class="service-cards">
+            {% for service in page.services %}
+            <div class="service-card">
+              {% if service.icon %}
+              <div class="service-icon">{{ service.icon }}</div>
+              {% endif %}
+              
+              <h3>{{ service.title }}</h3>
+              <p>{{ service.description }}</p>
+              
+              {% if service.link %}
+              <a href="{{ service.link | relative_url }}" class="btn btn--secondary">
+                Learn More →
+              </a>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- How It Works Section -->
+      {% if page.process %}
+      <section class="section how-it-works">
+        <div class="container">
+          <h2 class="text-center mb-section">How It Works</h2>
+          
+          <div class="process-steps">
+            {% for step in page.process %}
+            <div class="process-step">
+              <div class="step-number">{{ forloop.index }}</div>
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.description }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Testimonials Section -->
+      {% if page.testimonials %}
+      <section class="section testimonials-section" style="background-color: var(--light-gray, #f5f5f5);">
+        <div class="container">
+          <h2 class="text-center mb-section">What Our Clients Say</h2>
+          
+          <div class="testimonials-carousel">
+            {% for testimonial in page.testimonials %}
+            <div class="testimonial">
+              <blockquote>{{ testimonial.quote }}</blockquote>
+              
+              <div class="testimonial-author">
+                {% if testimonial.image %}
+                <img src="{{ testimonial.image | relative_url }}" alt="{{ testimonial.author }}" class="author-image">
+                {% endif %}
+                
+                <div class="author-info">
+                  <h4>{{ testimonial.author }}</h4>
+                  {% if testimonial.location %}
+                  <p class="author-location">{{ testimonial.location }}</p>
+                  {% endif %}
+                  {% if testimonial.rating %}
+                  <p class="stars">
+                    {% for i in (1..testimonial.rating) %}⭐{% endfor %}
+                  </p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- CTA Section -->
+      {% if page.cta %}
+      <section class="section cta-section">
+        <div class="container text-center">
+          <h2>{{ page.cta.title }}</h2>
+          {% if page.cta.subtitle %}
+          <p class="lead">{{ page.cta.subtitle }}</p>
+          {% endif %}
+          
+          <a href="{{ page.cta.link | relative_url }}" class="btn btn--large">
+            {{ page.cta.text }}
+          </a>
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Page Content -->
+      {% if page.content %}
+      <div class="container">
+        {{ content }}
+      </div>
+      {% endif %}
+    </div>
+
+    {% include footer.html %}
+    {% include scripts.html %}
+  </body>
+</html>

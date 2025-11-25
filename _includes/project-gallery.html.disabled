@@ -1,0 +1,8 @@
+<!-- Root Project Gallery Component (disabled during debugging)
+Usage: {% include project-gallery.html images=page.gallery %}
+
+This file was renamed to avoid being included while we isolate a Liquid recursion.
+The original content was moved here as a disabled copy.
+-->
+
+<!-- disabled copy -->
