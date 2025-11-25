@@ -1,56 +1,76 @@
 ---
-title: "About Us"
+title: "Uncia"
 layout: single
 permalink: /about/
 ---
 
-## Who We Are
+## About Uncia
 
-We are a husband-wife team of architecture and data engineering professionals specializing in home remodels, ADU design, and financial dashboards. Our approach combines creative design with rigorous cost analysis and ROI modeling to help California homeowners and small businesses make confident investment decisions.
+**Uncia** is the architecture and design studio of **Zhun Jiao** (Architect) and **Annie Jiao** (Data Engineer). We're a husband-wife team based in Austin, Texas, specializing in institutional design, residential development, and data-driven project delivery.
+
+### The Name
+
+The name *Uncia* carries multiple meanings that resonate with our practice:
+
+- **Latin Origin**: Uncia means "a twelfth"—the root of the English word "inch"—representing precision and measurement in design
+- **Pronunciation**: In Mandarin Chinese, uncia (云家) sounds similar to "yún jiā," meaning "my house"—reflecting our commitment to creating meaningful spaces
+- **Natural History**: Uncia was the former genus of the snow leopard (*Panthera uncia*), symbolizing rare beauty, adaptation, and resilience in challenging environments
+
+**Get in touch:** [zhun.jiao.architect@gmail.com](mailto:zhun.jiao.architect@gmail.com)
 
 ## Our Expertise
 
-### Home Remodels
-Transform your living space with thoughtful design that increases both comfort and property value. From kitchen renovations to full-home exterior updates, we deliver projects on time and within budget.
+We work across **institutional**, **multi-family residential**, and **community-scale projects**, combining rigorous architectural design with data-driven analysis. Our portfolio includes:
 
-**Services include:**
-- Interior design and space planning
-- 3D visualization and rendering
-- Permit coordination and contractor management
-- Cost estimation and timeline planning
+**Institutional & Educational**
+- K-12 school design, renovation, and master planning
+- University facilities and learning spaces
+- Public sector buildings and civic infrastructure
 
-### ADU Design & Development
-Accessory Dwelling Units (ADUs) represent a significant income opportunity for California homeowners. We design regulatory-compliant ADUs optimized for rental yield and long-term value appreciation.
+**Residential Development**
+- Multi-family housing and mixed-use projects
+- Townhouse communities and single-family neighborhoods
+- Affordable and workforce housing
 
-**Services include:**
-- Zoning and compliance analysis
-- Site-specific design and permitting
-- Cost modeling and rent projections
-- Investment ROI analysis and break-even calculations
+**Community Planning**
+- District master plans and development strategies
+- Campus master planning and phased design
+- Mixed-use urban redevelopment
 
-### Financial Analysis & Dashboards
-Every project begins with numbers. We build interactive cost estimators, ROI calculators, and investment dashboards that let you explore "what-if" scenarios before committing capital.
+**Design Services**
+- Architectural design and 3D visualization
+- Zoning analysis and permit coordination
+- Cost estimation and project management
+- Financial modeling and ROI analysis
+- Interactive dashboards and decision-support tools
 
-**Services include:**
-- Cost-breakdown dashboards
-- ROI and payback period analysis
-- Financing scenario modeling
-- Property value appreciation forecasting
+## Our Approach
 
-## Our Process
+**Precision + Creativity**: We believe architecture is both art and science. Every project begins with rigorous analysis—zoning, cost, program—and culminates in beautiful, functional design that serves real human needs.
 
-1. **Discovery**: We understand your vision, constraints, and financial goals.
-2. **Analysis**: Detailed cost estimates, zoning research, and financial modeling.
-3. **Design**: Creative solutions that balance aesthetics, function, and return on investment.
-4. **Planning**: Permits, timelines, contractor coordination, and ongoing oversight.
-5. **Delivery**: Quality completion with transparent cost tracking and performance reporting.
+**Data-Informed**: From cost estimation to financial modeling to project scheduling, we use data to inform every decision and communicate results clearly.
 
-## Why Work With Us
+**Collaborative**: We work closely with clients, contractors, engineers, and community stakeholders to deliver projects that exceed expectations on scope, schedule, and budget.
 
-- **Data-Driven**: Every design decision is backed by financial analysis and cost projections.
-- **Transparent**: Clear communication on budgets, timelines, and ROI expectations.
-- **Efficient**: We reduce project scope creep through upfront planning and rigorous cost control.
-- **Creative**: Beautiful, functional design that serves both your aesthetic and financial goals.
+## Selected Portfolio
+
+Our recent and current projects include:
+
+- **Round Rock City Center** – 180-unit mixed-use development with retail and office space
+- **Teacher Housing** – 80-unit affordable multi-family community
+- **Doss Elementary School** – AISD on-site replacement facility (K-5)
+- **Hutto High School** – Renovation and addition
+- **Crockett High School** – Wood structure building project
+- **Leander Early College High School** – New campus design
+- **Leander High School** – $200M comprehensive renovation
+- **Bastrop High School** – Renovation and addition
+- **C.D. Fulks Middle School** – Round Rock ISD facility
+- **Austin Oaks Redevelopment** – 17-acre office campus master plan
+- **New Braunfels ISD Administration Building** – Renovation project
+- **Atlantis 24-Hour Living District** – Master plan and design strategy
+- **St. Edwards University Library** – Design and renovation
+- **Guggenheim Helsinki** – Museum design competition entry
+- **Tea House Design** – Intimate residential pavilion
 
 ---
 

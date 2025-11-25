@@ -8,94 +8,29 @@ We'd love to hear about your project! Whether you're planning a home remodel, ex
 
 ## Contact Information
 
-**Email:** [your-email@example.com](mailto:your-email@example.com)  
-**Phone:** (XXX) XXX-XXXX  
-**Location:** California
+**Email:** [zhun.jiao.architect@gmail.com](mailto:zhun.jiao.architect@gmail.com?subject=Project%20Inquiry&body=Hi%20Zhun%20and%20Annie,%0A%0AI%27m%20interested%20in%20discussing%20a%20project.%20Here%20are%20the%20details:%0A%0AProject%20Type:%0ALocation:%0ATimeline:%0A%0AThank%20you!)  
+**Location:** Austin, Texas
 
 ---
 
-## Quick Contact Form
+## Direct Email
 
-<form method="POST" action="https://formspree.io/f/YOUR_FORM_ID" class="contact-form">
-  <div class="form-group">
-    <label for="name">Name *</label>
-    <input type="text" id="name" name="name" required>
-  </div>
+The easiest way to reach us is by email. Send details about your project, and we'll respond within 24 hours with next steps and availability for a consultation call.
 
-  <div class="form-group">
-    <label for="email">Email *</label>
-    <input type="email" id="email" name="email" required>
-  </div>
+**[Email us now](mailto:zhun.jiao.architect@gmail.com?subject=Architecture%20Project%20Inquiry)**
 
-  <div class="form-group">
-    <label for="phone">Phone</label>
-    <input type="tel" id="phone" name="phone">
-  </div>
+---
 
-  <div class="form-group">
-    <label for="project-type">Project Type *</label>
-    <select id="project-type" name="project-type" required>
-      <option value="">Select a project type...</option>
-      <option value="home-remodel">Home Remodel</option>
-      <option value="adu-design">ADU Design</option>
-      <option value="financial-dashboard">Financial Dashboard</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
+## What We'll Need
 
-  <div class="form-group">
-    <label for="message">Tell us about your project *</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
-  </div>
+To provide the best initial consultation and proposal, please include:
 
-  <div class="form-group">
-    <label for="budget">Estimated Budget</label>
-    <input type="text" id="budget" name="budget" placeholder="e.g., $50,000 - $100,000">
-  </div>
-
-  <button type="submit" class="btn btn--large">Send Message</button>
-</form>
-
-<style>
-  .contact-form {
-    max-width: 600px;
-    margin: 2rem 0;
-  }
-
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #333;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-family: inherit;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: #d4a373;
-    box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.1);
-  }
-
-  .form-group textarea {
-    resize: vertical;
-  }
-</style>
+- **Project Type**: Home remodel, ADU design, financial analysis, or other
+- **Location**: Where the project is located
+- **Scope**: Brief description of what you're envisioning
+- **Timeline**: When you're hoping to start
+- **Budget Range**: Approximate budget (if available)
+- **Contact Info**: Your preferred phone number and email
 
 ---
 
@@ -108,3 +43,4 @@ When you reach out, we'll:
 4. **Begin planning** once you're ready to move forward
 
 Looking forward to collaborating with you!
+
