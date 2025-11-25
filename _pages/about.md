@@ -1,9 +1,7 @@
 ---
 title: "About Us"
-layout: about
+layout: single
 permalink: /about/
-header:
-  image: "/assets/images/hero-bg.jpg"
 ---
 
 ## Who We Are

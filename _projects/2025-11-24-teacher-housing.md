@@ -7,6 +7,15 @@ year: 2025
 status: "concept"
 budget: "$18,000,000"
 hero_image: /assets/images/projects/placeholder-project-hero.svg
+gallery:
+  - src: /assets/images/projects/placeholder-project-hero.svg
+    caption: "Townhouse community layout"
+  - src: /assets/images/projects/placeholder-project-hero.svg
+    caption: "Individual unit floor plan render"
+  - src: /assets/images/projects/placeholder-project-hero.svg
+    caption: "Landscaped common area"
+  - src: /assets/images/projects/placeholder-project-hero.svg
+    caption: "Unit interior, modern finishes"
 categories: [multi-family, housing]
 ---
 
