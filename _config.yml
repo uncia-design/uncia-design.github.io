@@ -13,14 +13,15 @@ locale                   : "en-US"
 title                    : "Architecture & ADU Portfolio"
 title_separator          : "-"
 subtitle                 : "Smart Design. Data-Driven ROI."
-name                     : "Your Name"
-description              : "Minimal Mistakes theme test."
+name                     : " "
+description              : " "
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # use empty baseurl for local testing; set to "/test" when deploying to /test/ path
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/apple-touch-icon.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : "Custom Title" # overrides the website title displayed in the masthead, use " " for no title
+logo                     : "/assets/images/uncia-logo.svg" # Uncia logo for masthead
+favicon                  : "/assets/images/favicon.svg" # Uncia favicon for browser tab
+masthead_title           : "Uncia" # overrides the website title displayed in the masthead
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -67,7 +68,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : "mmistakes"
+  username               :
 facebook:
   username               :
   app_id                 :
@@ -91,10 +92,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Zhun and Annie Jiao"
   avatar           : "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
+  bio              : "working together to design beautiful, functional spaces."
+  location         : "Austin, Texas"
   links:
     - label: "Your Website"
       icon: "fas fa-fw fa-link"
