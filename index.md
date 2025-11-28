@@ -13,15 +13,15 @@ header:
 
 featured_projects:
   - title: "Round Rock City Center"
-    link: "/projects/2025-11-24-round-rock-city-center/"
+    url: "/projects/2025-11-24-round-rock-city-center/"
     excerpt: "180-unit mixed-use development with retail, offices, and market-rate apartments"
   
   - title: "Teacher Housing Community"
-    link: "/projects/2025-11-24-teacher-housing/"
+    url: "/projects/2025-11-24-teacher-housing/"
     excerpt: "80-unit affordable community designed for educators in high-cost areas"
   
   - title: "Doss Elementary School"
-    link: "/projects/2025-11-24-doss-elementary/"
+    url: "/projects/2025-11-24-doss-elementary/"
     excerpt: "K-5 AISD replacement facility with modern learning spaces"
 
 services:
