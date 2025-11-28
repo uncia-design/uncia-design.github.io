@@ -1,6 +1,6 @@
 ---
 layout: home-portfolio
-title: "UNCIA - Architecture & ADU Portfolio"
+title: "UNCIA"
 permalink: /
 
 header:

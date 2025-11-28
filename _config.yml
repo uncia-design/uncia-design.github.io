@@ -21,7 +21,7 @@ repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-m
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/uncia-logo.svg" # Uncia logo for masthead
 favicon                  : "/assets/images/favicon.svg" # Uncia favicon for browser tab
-masthead_title           : "Uncia" # overrides the website title displayed in the masthead
+masthead_title           : "UNCIA GROUP" # overrides the website title displayed in the masthead
 copyright                : "UNCIA GROUP" # Copyright text for footer
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
