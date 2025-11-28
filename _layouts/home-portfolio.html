@@ -188,9 +188,11 @@ layout: compress
 
       <!-- Page Content -->
       {% if page.content %}
-      <div class="container">
-        {{ content }}
-      </div>
+      <section class="section welcome-section">
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 3rem 2rem;">
+          {{ content }}
+        </div>
+      </section>
       {% endif %}
     </div>
 
