@@ -1,6 +1,7 @@
 ---
 layout: home-portfolio
-title: "Uncia - Architecture & ADU Portfolio"
+title: "UNCIA - Architecture & ADU Portfolio"
+permalink: /
 
 header:
   title: "Smart Design. Data-Driven ROI."

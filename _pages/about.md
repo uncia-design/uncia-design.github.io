@@ -6,26 +6,25 @@ permalink: /about/
 
 ## About Uncia
 
-**Uncia** is the architecture and design studio of **Zhun Jiao** (Architect) and **Annie Jiao** (Data Engineer). We're a husband-wife team based in Austin, Texas, specializing in institutional design, residential development, and data-driven project delivery.
+**Uncia** is the architecture and design studio of **Zhun Jiao** (Architect) and **Annie Branum-Jiao** (Data Engineer). We're a husband-wife team based in Austin, Texas, specializing in school design, residential development, and data-driven project delivery.
 
 ### The Name
 
 The name *Uncia* carries multiple meanings that resonate with our practice:
 
 - **Latin Origin**: Uncia means "a twelfth"—the root of the English word "inch"—representing precision and measurement in design
-- **Pronunciation**: In Mandarin Chinese, uncia (云家) sounds similar to "yún jiā," meaning "my house"—reflecting our commitment to creating meaningful spaces
+- **Pronunciation**: In Mandarin Chinese, uncia (吾家) sounds similar to "wú jiā," meaning "my house, my family"—reflecting our commitment to creating delightful spaces that bring people together. 
 - **Natural History**: Uncia was the former genus of the snow leopard (*Panthera uncia*), symbolizing rare beauty, adaptation, and resilience in challenging environments
 
 **Get in touch:** [zhun.jiao.architect@gmail.com](mailto:zhun.jiao.architect@gmail.com)
 
 ## Our Expertise
 
-We work across **institutional**, **multi-family residential**, and **community-scale projects**, combining rigorous architectural design with data-driven analysis. Our portfolio includes:
+We work across **education**, **multi-family residential**, and **community-scale projects**, combining rigorous architectural design with data-driven analysis. Our portfolio includes:
 
-**Institutional & Educational**
+**Educational**
 - K-12 school design, renovation, and master planning
 - University facilities and learning spaces
-- Public sector buildings and civic infrastructure
 
 **Residential Development**
 - Multi-family housing and mixed-use projects
