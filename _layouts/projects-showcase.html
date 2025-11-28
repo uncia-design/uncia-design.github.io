@@ -82,27 +82,12 @@ layout: archive
       margin-bottom: 0;
       padding-bottom: 0;
     }
-
-    &:nth-child(even) {
-      grid-template-columns: 1fr 1fr;
-
-      @media (max-width: 768px) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    &:nth-child(even) .project-showcase-info {
-      order: 2;
-    }
-
-    &:nth-child(even) .project-showcase-image {
-      order: 1;
-    }
   }
 
   .project-showcase-info {
     display: flex;
     flex-direction: column;
+    order: 1;
 
     .showcase-logo {
       width: 80px;
@@ -167,9 +152,11 @@ layout: archive
     overflow: hidden;
     border-radius: 8px;
     height: 400px;
+    order: 2;
 
     @media (max-width: 768px) {
       height: 300px;
+      order: unset;
     }
 
     img {
