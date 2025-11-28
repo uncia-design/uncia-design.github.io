@@ -1,9 +1,8 @@
 ---
-layout: collection
+layout: projects-showcase
 title: "Our Projects"
 permalink: /projects/
 collection: projects
-entries_layout: grid
 author_profile: false
 ---
 
