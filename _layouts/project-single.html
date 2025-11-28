@@ -3,174 +3,284 @@ layout: default
 ---
 
 <article class="project-single">
-  {% if page.header %}
-    {% include page__hero.html %}
-  {% endif %}
+  <div class="project-wrapper">
+    
+    <!-- Hero Section with Image -->
+    {% if page.hero_image %}
+    <section class="project-hero">
+      <img src="{{ page.hero_image | relative_url }}" alt="{{ page.title }}" class="hero-image">
+    </section>
+    {% endif %}
 
-  <div class="container">
-    <!-- Project Header -->
-    <section class="project-section header-section">
-      <div class="section-content">
-        <h1>{{ page.title }}</h1>
+    <!-- Project Grid: Info Left, Content Right -->
+    <div class="project-grid">
+      
+      <!-- Left Column: Project Info -->
+      <aside class="project-sidebar">
         
+        <!-- Project Logo/Icon -->
+        {% if page.logo %}
+        <div class="project-logo">
+          <img src="{{ page.logo | relative_url }}" alt="{{ page.title }} logo">
+        </div>
+        {% endif %}
+        
+        <!-- Project Title (Bold) -->
+        <h1 class="project-title">{{ page.title }}</h1>
+        
+        <!-- Project Subtitle/Description -->
         {% if page.subtitle %}
-        <p class="lead">{{ page.subtitle }}</p>
+        <p class="project-description">{{ page.subtitle }}</p>
         {% endif %}
         
         <!-- Project Metadata -->
         <div class="project-meta">
           {% if page.typology %}
-          <span class="meta-item"><strong>Type:</strong> {{ page.typology }}</span>
+          <div class="meta-item">
+            <span class="meta-label">Type</span>
+            <span class="meta-value">{{ page.typology }}</span>
+          </div>
           {% endif %}
+          
           {% if page.location %}
-          <span class="meta-item"><strong>Location:</strong> {{ page.location }}</span>
+          <div class="meta-item">
+            <span class="meta-label">Location</span>
+            <span class="meta-value">{{ page.location }}</span>
+          </div>
           {% endif %}
+          
           {% if page.year %}
-          <span class="meta-item"><strong>Year:</strong> {{ page.year }}</span>
+          <div class="meta-item">
+            <span class="meta-label">Year</span>
+            <span class="meta-value">{{ page.year }}</span>
+          </div>
           {% endif %}
+          
           {% if page.status %}
-          <span class="meta-item"><strong>Status:</strong> {{ page.status }}</span>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">{{ page.status }}</span>
+          </div>
+          {% endif %}
+          
+          {% if page.budget %}
+          <div class="meta-item">
+            <span class="meta-label">Budget</span>
+            <span class="meta-value">{{ page.budget }}</span>
+          </div>
           {% endif %}
         </div>
-      </div>
-    </section>
-
-    <!-- Gallery Placeholder -->
-    {% if page.gallery %}
-    <section class="project-section gallery-section" style="background-color: #f5f5f5;">
-      <div class="project-gallery-placeholder">
-        <p>Gallery with {{ page.gallery | size }} images would display here.</p>
-      </div>
-    </section>
-    {% endif %}
-
-    <!-- Project Description -->
-    <section class="project-section description-section">
-      <div class="section-content">
+      </aside>
+      
+      <!-- Right Column: Main Content -->
+      <main class="project-content">
         {{ content }}
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="project-section cta-section">
-      <div class="cta-box">
-        <h2>Interested in a Similar Project?</h2>
-        <p>Let's discuss how we can bring your vision to life.</p>
-        <a href="/contact" class="btn btn--large">Get In Touch</a>
-      </div>
-    </section>
+        
+        <!-- CTA Section -->
+        <section class="project-cta">
+          <h2>Interested in a Similar Project?</h2>
+          <p>Let's discuss how we can bring your vision to life.</p>
+          <a href="/contact" class="btn btn--large">Get In Touch</a>
+        </section>
+      </main>
+      
+    </div>
   </div>
 </article>
 
 <style>
   .project-single {
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
+    .project-wrapper {
+      width: 100%;
     }
 
-    .section-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-  }
-
-  .project-section {
-    padding: 3rem 2rem;
-    margin: 0;
-    border-bottom: 1px solid #e8e8e8;
-
-    @media (max-width: 768px) {
-      padding: 2rem 1rem;
-    }
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    h3 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-  }
-
-  .header-section {
-    text-align: center;
-
-    .lead {
-      font-size: 1.25rem;
-      color: #666;
-      margin-bottom: 2rem;
-    }
-
-    .project-meta {
+    .project-hero {
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
+      align-items: center;
       justify-content: center;
-      margin-top: 2rem;
+      background-color: #f5f5f5;
 
-      .meta-item {
-        font-size: 0.9rem;
-        color: #666;
+      @media (max-width: 768px) {
+        height: 40vh;
+      }
 
-        strong {
-          color: #1a1a1a;
+      .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+        padding: 3rem 2rem;
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .project-sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+
+      @media (max-width: 768px) {
+        position: static;
+        top: auto;
+      }
+
+      .project-logo {
+        margin-bottom: 2rem;
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+
+      .project-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+
+        @media (max-width: 768px) {
+          font-size: 1.5rem;
+        }
+      }
+
+      .project-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+
+      .project-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e0e0e0;
+
+        .meta-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+
+          .meta-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+          }
+
+          .meta-value {
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .project-content {
+      h2 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem 0;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin: 1.5rem 0 1rem 0;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 1.5rem;
+      }
+
+      ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+
+        li {
+          margin-bottom: 0.75rem;
+          color: #555;
+          line-height: 1.7;
+        }
+      }
+
+      strong {
+        color: #1a1a1a;
+        font-weight: 600;
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      .project-cta {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e0e0e0;
+
+        h2 {
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          margin-bottom: 2rem;
+          font-size: 1.1rem;
         }
       }
     }
   }
 
-  .gallery-section {
-    background-color: #f5f5f5;
-  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
 
-  .description-section {
-    text-align: left;
-
-    p, ul, ol {
-      line-height: 1.8;
-      color: #333;
-      margin-bottom: 1.5rem;
+    &:hover {
+      background-color: #1a252f;
     }
 
-    ul, ol {
-      padding-left: 2rem;
-    }
-
-    li {
-      margin-bottom: 0.75rem;
-    }
-
-    strong {
-      color: #1a1a1a;
-    }
-  }
-
-  .cta-box {
-    background-color: #f5f5f5;
-    padding: 3rem 2rem;
-    text-align: center;
-    border-left: 4px solid #d4a373;
-    max-width: 800px;
-    margin: 0 auto;
-
-    h2 {
-      margin-bottom: 1rem;
-    }
-
-    p {
-      margin-bottom: 2rem;
-      font-size: 1.125rem;
-    }
-
-    @media (max-width: 768px) {
-      padding: 2rem 1rem;
+    &--large {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
     }
   }
 </style>
