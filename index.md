@@ -13,30 +13,30 @@ header:
 
 featured_projects:
   - title: "Round Rock City Center"
-    url: "/projects/2025-11-24-round-rock-city-center/"
+    link: "/projects/2025-11-24-round-rock-city-center/"
     excerpt: "180-unit mixed-use development with retail, offices, and market-rate apartments"
   
   - title: "Teacher Housing Community"
-    url: "/projects/2025-11-24-teacher-housing/"
+    link: "/projects/2025-11-24-teacher-housing/"
     excerpt: "80-unit affordable community designed for educators in high-cost areas"
   
   - title: "Doss Elementary School"
-    url: "/projects/2025-11-24-doss-elementary-school/"
+    link: "/projects/2025-11-24-doss-elementary/"
     excerpt: "K-5 AISD replacement facility with modern learning spaces"
 
 services:
   - title: "Home Remodels"
-    icon: "🏠"
+    icon: " "
     description: "Complete interior and exterior renovations that increase both beauty and property value. From kitchens to bathrooms to full home transformations."
     link: "/about/#remodels"
   
   - title: "ADU Design"
-    icon: "🏘️"
-    description: "Code-compliant accessory dwelling unit design that generates rental income. We handle design, permitting support, and ROI projections."
+    icon: " "
+    description: "Code-compliant accessory dwelling unit design that generates rental income. We handle design, and permitting support."
     link: "/about/#adu"
   
   - title: "ROI Dashboards"
-    icon: "📊"
+    icon: " "
     description: "Interactive cost estimators and financial visualizations to help you understand the investment potential of your project before breaking ground."
     link: "/about/#dashboards"
 
