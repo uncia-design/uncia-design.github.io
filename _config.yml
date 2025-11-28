@@ -10,7 +10,7 @@ minimal_mistakes_skin    : "architecture" # "air", "aqua", "contrast", "dark", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Architecture & ADU Portfolio"
+title                    : "UNCIA GROUP"
 title_separator          : "-"
 subtitle                 : "Smart Design. Data-Driven ROI."
 name                     : " "
@@ -22,6 +22,7 @@ teaser                   : # path of fallback teaser image, e.g. "/assets/images
 logo                     : "/assets/images/uncia-logo.svg" # Uncia logo for masthead
 favicon                  : "/assets/images/favicon.svg" # Uncia favicon for browser tab
 masthead_title           : "Uncia" # overrides the website title displayed in the masthead
+copyright                : "UNCIA GROUP" # Copyright text for footer
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -114,12 +115,6 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/"
