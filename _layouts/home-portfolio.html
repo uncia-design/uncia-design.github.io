@@ -40,29 +40,50 @@ layout: compress
           
           <div class="projects-grid projects-grid--featured">
             {% for project in page.featured_projects %}
-              {% assign item = site.projects | where: "title", project | first %}
-              {% if item %}
-              <div class="project-card" style="background-image: url('{{ item.hero_image | relative_url }}');">
-                <div class="project-card__content">
-                  <h3>{{ item.title }}</h3>
-                  <p class="metadata">
-                    <span class="project-type">{{ item.typology }}</span> • 
-                    <span class="project-location">{{ item.location }}</span>
-                  </p>
+              {% if project.url %}
+                <!-- Featured project with direct URL -->
+                {% assign item = site.projects | where: "title", project.title | first %}
+                {% if item %}
+                <div class="project-card" style="background-image: url('{{ item.hero_image | relative_url }}');">
+                  <div class="project-card__content">
+                    <h3>{{ project.title }}</h3>
+                    {% if project.excerpt %}
+                    <p class="excerpt">{{ project.excerpt }}</p>
+                    {% endif %}
+                    {% if item.typology %}
+                    <p class="metadata">
+                      <span class="project-type">{{ item.typology }}</span> • 
+                      <span class="project-location">{{ item.location }}</span>
+                    </p>
+                    {% endif %}
+                  </div>
+                  <a href="{{ project.url | relative_url }}" class="project-card__link"></a>
                 </div>
-                <a href="{{ item.url | relative_url }}" class="project-card__link"></a>
-              </div>
+                {% endif %}
+              {% else %}
+                <!-- Fallback for legacy string format -->
+                {% assign item = site.projects | where: "title", project | first %}
+                {% if item %}
+                <div class="project-card" style="background-image: url('{{ item.hero_image | relative_url }}');">
+                  <div class="project-card__content">
+                    <h3>{{ item.title }}</h3>
+                    <p class="metadata">
+                      <span class="project-type">{{ item.typology }}</span> • 
+                      <span class="project-location">{{ item.location }}</span>
+                    </p>
+                  </div>
+                  <a href="{{ item.url | relative_url }}" class="project-card__link"></a>
+                </div>
+                {% endif %}
               {% endif %}
             {% endfor %}
           </div>
 
-          {% if page.featured_projects_link %}
           <div class="text-center" style="margin-top: 2rem;">
-            <a href="{{ page.featured_projects_link | relative_url }}" class="btn">
+            <a href="/projects/" class="btn">
               View All Projects
             </a>
           </div>
-          {% endif %}
         </div>
       </section>
       {% endif %}
