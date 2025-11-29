@@ -5,6 +5,7 @@ typology: "Secondary Education"
 location: "Austin, TX"
 year: 2024
 status: "Design Phase"
+filter_tag: "education"
 budget: "$78M"
 project_scope: "Wood Structure Building"
 categories: [education, k12, public-facility]

@@ -5,6 +5,7 @@ typology: "Office Campus Master Plan"
 location: "Austin, TX"
 year: 2025
 status: "Master Planning"
+filter_tag: "remodel"
 budget: "$250M"
 project_scope: "17-Acre Campus Masterplan/Design"
 categories: [commercial, office, master-plan]

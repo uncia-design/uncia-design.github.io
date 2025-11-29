@@ -5,6 +5,7 @@ typology: "Mixed-Use Urban District"
 location: "Austin, TX"
 year: 2025
 status: "Master Planning"
+filter_tag: "residential"
 budget: "$500M"
 project_scope: "Master Plan & Design Strategy"
 categories: [master-plan, mixed-use, urban-development]

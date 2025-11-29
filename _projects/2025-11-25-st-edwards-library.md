@@ -5,6 +5,7 @@ typology: "University Library"
 location: "Austin, TX"
 year: 2025
 status: "Design Phase"
+filter_tag: "culture"
 budget: "$35M"
 project_scope: "Design & Renovation"
 categories: [higher-education, cultural, library]

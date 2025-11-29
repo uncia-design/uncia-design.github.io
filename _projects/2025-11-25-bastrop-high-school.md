@@ -5,6 +5,7 @@ typology: "Secondary Education"
 location: "Bastrop, TX"
 year: 2024
 status: "Schematic Design"
+filter_tag: "education"
 budget: "$65M"
 project_scope: "Renovation & Addition"
 categories: [education, k12, public-facility]

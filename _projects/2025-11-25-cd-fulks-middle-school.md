@@ -5,6 +5,7 @@ typology: "Middle Education"
 location: "Round Rock, TX"
 year: 2025
 status: "Design Phase"
+filter_tag: "education"
 budget: "$48M"
 project_scope: "New Construction"
 categories: [education, k12, public-facility]

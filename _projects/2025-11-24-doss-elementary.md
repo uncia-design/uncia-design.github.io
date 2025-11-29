@@ -5,6 +5,7 @@ typology: "K-8 Educational Facility"
 location: "Austin, TX (AISD)"
 year: 2025
 status: "in-planning"
+filter_tag: "education"
 budget: "$72,000,000"
 hero_image: /assets/images/projects/placeholder-project-hero.svg
 gallery:

@@ -5,6 +5,7 @@ typology: "Museum (Competition Entry)"
 location: "Helsinki, Finland"
 year: 2023
 status: "Competition Entry"
+filter_tag: "culture"
 budget: "€85M (Estimated)"
 project_scope: "Museum Design Competition"
 categories: [cultural, museum, international]

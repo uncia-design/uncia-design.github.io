@@ -5,6 +5,7 @@ typology: "Affordable Housing"
 location: "Central Texas"
 year: 2025
 status: "concept"
+filter_tag: "residential"
 budget: "$18,000,000"
 hero_image: /assets/images/projects/placeholder-project-hero.svg
 gallery:

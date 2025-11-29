@@ -5,6 +5,7 @@ typology: "Residential Pavilion"
 location: "Central Texas"
 year: 2024
 status: "Concept Development"
+filter_tag: "culture"
 budget: "$400K"
 project_scope: "Intimate Residential Pavilion"
 categories: [residential, pavilion, cultural]

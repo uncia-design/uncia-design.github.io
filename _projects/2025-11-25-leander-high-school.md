@@ -5,6 +5,7 @@ typology: "Secondary Education"
 location: "Leander, TX"
 year: 2025
 status: "Programming"
+filter_tag: "education"
 budget: "$200M"
 project_scope: "Comprehensive Renovation"
 categories: [education, k12, public-facility]

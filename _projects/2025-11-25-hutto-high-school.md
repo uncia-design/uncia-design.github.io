@@ -5,6 +5,7 @@ typology: "Secondary Education"
 location: "Hutto, TX"
 year: 2025
 status: "In Planning"
+filter_tag: "education"
 budget: "$185M"
 project_scope: "Renovation & Addition"
 categories: [education, k12, public-facility]
