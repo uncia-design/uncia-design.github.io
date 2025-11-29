@@ -319,9 +319,13 @@ pre {
     margin: 0;
     padding: 0;
 
-    @media (max-width: $medium-screen) {
-      gap: 1rem;
+    @media (max-width: 1200px) {
+      gap: 1.5rem;
       font-size: 0.9rem;
+    }
+
+    @media (max-width: 1024px) {
+      display: none;
     }
 
     a {
@@ -345,6 +349,12 @@ pre {
           background-color: $accent-color;
         }
       }
+    }
+  }
+
+  .hidden-links {
+    @media (min-width: 1025px) {
+      display: none !important;
     }
   }
 }
