@@ -89,10 +89,15 @@ layout: archive
     box-sizing: border-box;
   }
 
+  /* Hide archive page title */
+  .page__title {
+    display: none;
+  }
+
   /* Desktop Header - Fixed centered tabs */
   .projects-header-desktop {
     display: block;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     background-color: white;
     border-bottom: 1px solid #e0e0e0;
     text-align: center;
@@ -108,10 +113,11 @@ layout: archive
   .projects-main-nav-fixed {
     display: flex;
     justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-    max-width: 800px;
+    gap: 2.5rem;
+    flex-wrap: nowrap;
+    max-width: 900px;
     margin: 0 auto;
+    overflow-x: auto;
   }
 
   .main-category {
@@ -127,6 +133,7 @@ layout: archive
     align-items: center;
     gap: 0.6rem;
     white-space: nowrap;
+    flex-shrink: 0;
 
     &:hover {
       color: #2c3e50;
