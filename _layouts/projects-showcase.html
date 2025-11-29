@@ -305,16 +305,16 @@ layout: archive
   .project-showcase-item {
     display: grid;
     grid-template-columns: 1fr 400px;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: flex-start;
-    padding: 3rem 4rem;
+    padding: 2rem 3rem;
     border-bottom: 1px solid #e0e0e0;
     min-height: auto;
 
     @media (max-width: 1024px) {
       grid-template-columns: 1fr;
-      gap: 2rem;
-      padding: 2rem;
+      gap: 1.5rem;
+      padding: 1.5rem;
       min-height: auto;
     }
 
@@ -329,6 +329,7 @@ layout: archive
     order: 2;
     height: 300px;
     width: 400px;
+    cursor: pointer;
 
     @media (max-width: 1024px) {
       order: 1;
@@ -432,28 +433,15 @@ layout: archive
       font-size: 0.75rem;
       font-weight: 500;
       color: #999;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .showcase-excerpt {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #555;
-      margin-bottom: 2rem;
+      display: none;
     }
 
     .showcase-link {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #2c3e50;
-      text-decoration: none;
-      display: inline-block;
-      transition: color 0.3s ease;
-      width: fit-content;
-
-      &:hover {
-        color: #1a252f;
-      }
+      display: none;
     }
   }
 
@@ -581,6 +569,14 @@ layout: archive
 
         // Set full resolution URL (without transformation)
         fullImg.src = imageSrc;
+
+        // Make image clickable to navigate to project
+        container.addEventListener('click', function() {
+          const projectLink = this.closest('.project-showcase-item').querySelector('.showcase-link');
+          if (projectLink && projectLink.href) {
+            window.location.href = projectLink.href;
+          }
+        });
 
         // Intersection Observer for lazy loading
         const observer = new IntersectionObserver((entries) => {
