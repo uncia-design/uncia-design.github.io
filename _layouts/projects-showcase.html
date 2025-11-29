@@ -46,9 +46,9 @@ layout: archive
       <div class="project-showcase-image">
         {% if project.hero_image %}
           <!-- Lazy loading image trio -->
-          <img class="project-img tiny" src="{{ project.hero_image | relative_url }}?tr=h-6" alt="{{ project.title }}" style="display: none; width: 150%;">
-          <img class="project-img small" src="{{ project.hero_image | relative_url }}?tr=h-700" alt="{{ project.title }}" style="z-index: 2; opacity: 1;">
-          <img class="project-img full" src="" alt="{{ project.title }}" style="">
+          <img class="project-img tiny" src="{{ project.hero_image | relative_url }}?tr=h-6" alt="{{ project.title }}">
+          <img class="project-img small" src="{{ project.hero_image | relative_url }}?tr=h-700" alt="{{ project.title }}">
+          <img class="project-img full" src="" alt="{{ project.title }}">
         {% else %}
           <img src="/assets/images/projects/placeholder-project-hero.svg" alt="Project placeholder">
         {% endif %}
@@ -408,19 +408,19 @@ layout: archive
     }
 
     .showcase-title {
-      font-size: 1rem;
+      font-size: 1.5rem;
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 0.5rem;
       color: #1a1a1a;
 
       @media (max-width: 1024px) {
-        font-size: 0.8rem;
+        font-size: 1.3rem;
       }
     }
 
     .showcase-location {
-      font-size: 0.65rem;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -429,7 +429,7 @@ layout: archive
     }
 
     .showcase-year {
-      font-size: 0.65rem;
+      font-size: 0.75rem;
       font-weight: 500;
       color: #999;
       margin-bottom: 1.5rem;
