@@ -2,14 +2,14 @@
 layout: archive
 ---
 
-<!-- Desktop Navigation Header -->
-<div class="projects-header-desktop">
-  <nav class="projects-main-nav-fixed">
-    <a href="#" class="main-category active" data-category="all"><span class="dot"></span>All</a>
-    <a href="#" class="main-category" data-category="education"><span class="dot"></span>Education</a>
-    <a href="#" class="main-category" data-category="culture"><span class="dot"></span>Culture</a>
-    <a href="#" class="main-category" data-category="residential"><span class="dot"></span>Residential</a>
-    <a href="#" class="main-category" data-category="remodel"><span class="dot"></span>Remodel</a>
+<!-- Project Filters (shown instead of separate nav) -->
+<div class="projects-filters-container">
+  <nav class="projects-filters-desktop">
+    <a href="#" class="filter-btn active" data-category="all"><span class="dot"></span>All</a>
+    <a href="#" class="filter-btn" data-category="education"><span class="dot"></span>Education</a>
+    <a href="#" class="filter-btn" data-category="culture"><span class="dot"></span>Culture</a>
+    <a href="#" class="filter-btn" data-category="residential"><span class="dot"></span>Residential</a>
+    <a href="#" class="filter-btn" data-category="remodel"><span class="dot"></span>Remodel</a>
   </nav>
 </div>
 
@@ -101,7 +101,7 @@ layout: archive
   }
 
   /* Desktop Header - Fixed centered tabs */
-  .projects-header-desktop {
+  .projects-filters-container {
     display: block;
     padding: 1.5rem 2rem;
     background-color: white;
@@ -116,7 +116,7 @@ layout: archive
     }
   }
 
-  .projects-main-nav-fixed {
+  .projects-filters-desktop {
     display: flex;
     justify-content: center;
     gap: 2.5rem;
@@ -126,7 +126,7 @@ layout: archive
     overflow-x: auto;
   }
 
-  .main-category {
+  .filter-btn {
     text-decoration: none;
     color: #999;
     font-size: 0.9rem;
@@ -457,10 +457,6 @@ layout: archive
     }
   }
 
-  .projects-header {
-    display: none;
-  }
-
   .main-category {
     text-decoration: none;
     color: #999;
@@ -496,188 +492,12 @@ layout: archive
     }
   }
 
-  /* Mobile/Tablet Dropdown */
-  .projects-dropdown-wrapper {
-    display: none;
-  }
-
-  .projects-dropdown-toggle {
-    display: none;
-  }
-
-  .dropdown-label {
-    display: none;
-  }
-
-  .dropdown-icon {
-    display: none;
-  }
-
-  .projects-dropdown-menu {
-    display: none;
-  }
-
-  .dropdown-item {
-    display: none;
-  }
-
-  .projects-sub-nav {
-    display: none;
-  }
-
-  .projects-showcase {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  /* Desktop: Grid Layout */
-  .project-showcase-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    margin-bottom: 6rem;
-    padding-bottom: 4rem;
-    border-bottom: 1px solid #e0e0e0;
-
-    @media (max-width: 1024px) {
-      gap: 3rem;
-      margin-bottom: 4rem;
-      padding-bottom: 3rem;
-    }
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      gap: 0;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: none;
-    }
-
-    &:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-  }
-
-  .project-showcase-info {
-    display: flex;
-    flex-direction: column;
-    order: 1;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
-
-    .showcase-logo {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 1.5rem;
-      background-color: #1a1a1a;
-      padding: 8px;
-      border-radius: 4px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        filter: brightness(0) invert(1);
-      }
-    }
-
-    .showcase-title {
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-      color: #1a1a1a;
-
-      @media (max-width: 768px) {
-        font-size: 1.5rem;
-      }
-    }
-
-    .showcase-location {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #999;
-      margin-bottom: 1rem;
-    }
-
-    .showcase-excerpt {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #555;
-      margin-bottom: 1.5rem;
-    }
-
-    .showcase-link {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #2c3e50;
-      text-decoration: none;
-      display: inline-block;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: #1a252f;
-      }
-    }
-  }
-
-  .project-showcase-image {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    height: 400px;
-    order: 2;
-
-    @media (max-width: 1024px) {
-      height: 350px;
-    }
-
-    @media (max-width: 768px) {
-      height: auto;
-      aspect-ratio: 16 / 9;
-      border-radius: 0;
-      margin-bottom: 0.5rem;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .mobile-project-title {
-      display: none;
-
-      @media (max-width: 768px) {
-        display: block;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-        color: #666;
-        padding: 0.5rem 0;
-      }
-    }
-  }
-
-  /* Grid view for mobile filtered results */
-  .projects-showcase.grid-view {
-    display: none;
-  }
-
-
+  /* Container and layout */
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const mainCategoryBtns = document.querySelectorAll('.main-category');
+    const filterBtns = document.querySelectorAll('.filter-btn');
     const sidebarCategories = document.querySelectorAll('.sidebar-category');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const projectsSidebar = document.getElementById('projectsSidebar');
@@ -696,15 +516,15 @@ layout: archive
       sidebarOverlay.classList.remove('active');
     });
 
-    // Filter by main category buttons (desktop)
-    mainCategoryBtns.forEach(btn => {
+    // Filter by filter buttons (desktop)
+    filterBtns.forEach(btn => {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         const filter = this.getAttribute('data-category');
         filterProjects(filter);
 
         // Update active button
-        mainCategoryBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
 
         // Update sidebar active state
@@ -725,8 +545,8 @@ layout: archive
         this.classList.add('active');
 
         // Update desktop active state
-        mainCategoryBtns.forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`.main-category[data-category="${filter}"]`).classList.add('active');
+        filterBtns.forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.filter-btn[data-category="${filter}"]`).classList.add('active');
 
         // Close sidebar
         projectsSidebar.classList.remove('active');
