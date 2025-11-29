@@ -328,6 +328,7 @@ layout: archive
     overflow: hidden;
     order: 2;
     height: 300px;
+    width: 400px;
 
     @media (max-width: 1024px) {
       order: 1;
@@ -352,6 +353,9 @@ layout: archive
         &.tiny {
           filter: blur(10px);
           z-index: 1;
+          display: block !important;
+          width: 100% !important;
+          height: 100% !important;
         }
 
         &.small {
@@ -404,19 +408,19 @@ layout: archive
     }
 
     .showcase-title {
-      font-size: 2rem;
+      font-size: 1rem;
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 0.5rem;
       color: #1a1a1a;
 
       @media (max-width: 1024px) {
-        font-size: 1.8rem;
+        font-size: 0.8rem;
       }
     }
 
     .showcase-location {
-      font-size: 0.85rem;
+      font-size: 0.65rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -425,7 +429,7 @@ layout: archive
     }
 
     .showcase-year {
-      font-size: 0.85rem;
+      font-size: 0.65rem;
       font-weight: 500;
       color: #999;
       margin-bottom: 1.5rem;
