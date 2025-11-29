@@ -45,9 +45,12 @@ layout: archive
     <div class="project-showcase-item" data-category="{{ project_category }}">
       <div class="project-showcase-image">
         {% if project.hero_image %}
-        <img src="{{ project.hero_image | relative_url }}" alt="{{ project.title }}">
+          <!-- Lazy loading image trio -->
+          <img class="project-img tiny" src="{{ project.hero_image | relative_url }}?tr=h-6" alt="{{ project.title }}" style="display: none; width: 150%;">
+          <img class="project-img small" src="{{ project.hero_image | relative_url }}?tr=h-700" alt="{{ project.title }}" style="z-index: 2; opacity: 1;">
+          <img class="project-img full" src="" alt="{{ project.title }}" style="">
         {% else %}
-        <img src="/assets/images/projects/placeholder-project-hero.svg" alt="Project placeholder">
+          <img src="/assets/images/projects/placeholder-project-hero.svg" alt="Project placeholder">
         {% endif %}
       </div>
       
@@ -336,6 +339,35 @@ layout: archive
       width: 100%;
       height: 100%;
       object-fit: cover;
+
+      &.project-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.5s ease;
+
+        &.tiny {
+          filter: blur(10px);
+          z-index: 1;
+        }
+
+        &.small {
+          z-index: 2;
+          opacity: 1;
+        }
+
+        &.full {
+          z-index: 3;
+          opacity: 0;
+        }
+
+        &.loaded {
+          opacity: 1;
+        }
+      }
     }
   }
 
@@ -708,5 +740,73 @@ layout: archive
         }
       });
     }
+
+    // ===== Lazy Loading Images =====
+    function initImageLazyLoading() {
+      const projectImages = document.querySelectorAll('.project-showcase-image');
+
+      projectImages.forEach(container => {
+        const tinyImg = container.querySelector('.project-img.tiny');
+        const smallImg = container.querySelector('.project-img.small');
+        const fullImg = container.querySelector('.project-img.full');
+
+        if (!tinyImg || !smallImg || !fullImg) return;
+
+        // Get the source URL from the small image
+        const imageSrc = smallImg.src.replace('?tr=h-700', '');
+
+        // Set full resolution URL (without transformation)
+        fullImg.src = imageSrc;
+
+        // Intersection Observer for lazy loading
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const imageContainer = entry.target;
+              const fullImage = imageContainer.querySelector('.project-img.full');
+
+              // Preload full resolution image
+              if (fullImage && fullImage.src) {
+                fullImage.onload = () => {
+                  fullImage.classList.add('loaded');
+                };
+              }
+
+              observer.unobserve(imageContainer);
+            }
+          });
+        }, {
+          rootMargin: '100px'
+        });
+
+        observer.observe(container);
+      });
+
+      // Responsive image loading based on viewport width
+      function handleViewportChange() {
+        projectImages.forEach(container => {
+          const smallImg = container.querySelector('.project-img.small');
+          const fullImg = container.querySelector('.project-img.full');
+
+          if (!smallImg || !fullImg) return;
+
+          const viewport = window.innerWidth;
+
+          // Load full resolution on larger screens
+          if (viewport > 1200 && fullImg.src && !fullImg.classList.contains('loaded')) {
+            fullImg.onload = () => {
+              fullImg.classList.add('loaded');
+            };
+          }
+        });
+      }
+
+      // Listen for viewport changes
+      window.addEventListener('resize', handleViewportChange);
+      handleViewportChange();
+    }
+
+    // Initialize lazy loading
+    initImageLazyLoading();
   });
 </script>
