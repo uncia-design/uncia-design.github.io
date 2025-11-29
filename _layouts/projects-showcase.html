@@ -20,6 +20,9 @@ layout: archive
 
 <!-- Sidebar Navigation -->
 <div class="projects-sidebar" id="projectsSidebar">
+  <div class="sidebar-header">
+    <h3>Filter Projects</h3>
+  </div>
   <nav class="projects-sidebar-nav">
     <a href="#" class="sidebar-category active" data-category="all"><span class="dot"></span>All</a>
     <a href="#" class="sidebar-category" data-category="education"><span class="dot"></span>Education</a>
@@ -160,8 +163,8 @@ layout: archive
   .sidebar-toggle {
     display: none;
     position: fixed;
-    top: 2rem;
-    left: 2rem;
+    top: 1.5rem;
+    right: 2rem;
     z-index: 999;
     background: none;
     border: none;
@@ -211,14 +214,15 @@ layout: archive
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    z-index: 999;
-
-    @media (max-width: 1024px) {
-      display: none;
-    }
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 
     &.active {
       display: block;
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 
@@ -226,6 +230,21 @@ layout: archive
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  .sidebar-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    h3 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #2c3e50;
+    }
   }
 
   .sidebar-category {
