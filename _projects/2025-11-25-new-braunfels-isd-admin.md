@@ -5,7 +5,7 @@ typology: "Administrative Facility"
 location: "New Braunfels, TX"
 year: 2024
 status: "Construction"
-filter_tag: "all"
+filter_tag: "education"
 budget: "$18M"
 project_scope: "Renovation & Modernization"
 categories: [public-facility, admin-office]

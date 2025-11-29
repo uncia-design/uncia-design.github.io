@@ -6,6 +6,7 @@ location: "Leander, TX"
 year: 2024
 status: "Construction"
 filter_tag: "education"
+filter_tag: "education"
 budget: "$92M"
 project_scope: "New Campus Design"
 categories: [education, k12, public-facility]
