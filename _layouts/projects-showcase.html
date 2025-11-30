@@ -63,16 +63,6 @@ layout: archive
         {% if project.year %}
         <p class="showcase-year">{{ project.year }}</p>
         {% endif %}
-        
-        <!-- Project Excerpt/Description -->
-        {% if project.excerpt %}
-        <p class="showcase-excerpt">{{ project.excerpt }}</p>
-        {% elsif project.content %}
-        <p class="showcase-excerpt">{{ project.content | strip_html | truncatewords: 30 }}</p>
-        {% endif %}
-        
-        <!-- Link -->
-        <a href="{{ project.url | relative_url }}" class="showcase-link">View Project →</a>
       </div>
     </div>
     {% endfor %}
