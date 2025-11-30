@@ -14,12 +14,12 @@
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
             <li class="masthead__menu-item{% if link.children %} has-children{% endif %}">
-              <a class="masthead__menu-item-link"
+              <a
                 href="{{ link.url | relative_url }}"
                 {% if link.description %} title="{{ link.description }}"{% endif %}
                 {% if link.target %} target="{{ link.target }}"{% endif %}
               >{{ link.title }}</a>
-              
+
               {%- if link.children -%}
               <ul class="submenu">
                 {%- for child in link.children -%}
