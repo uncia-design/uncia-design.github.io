@@ -1,7 +1,17 @@
-# main links
 main:
   - title: "Projects"
     url: /projects/
+    children:
+      - title: "All"
+        url: /projects/#all
+      - title: "Education"
+        url: /projects/#education
+      - title: "Culture"
+        url: /projects/#culture
+      - title: "Residential"
+        url: /projects/#residential
+      - title: "Remodel"
+        url: /projects/#remodel
   - title: "About"
     url: /about/
   - title: "Data & Dashboards"
