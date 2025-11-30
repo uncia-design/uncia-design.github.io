@@ -357,6 +357,52 @@ pre {
       display: none !important;
     }
   }
+
+  /* Show hamburger menu on mobile/tablet */
+  .greedy-nav__toggle {
+    @media (max-width: 1024px) {
+      display: block !important;
+      position: relative;
+      height: 26px;
+      border: 0;
+      outline: none;
+      background-color: transparent;
+      cursor: pointer;
+      padding: 0;
+
+      &.hidden {
+        display: block !important;
+      }
+    }
+  }
+
+  .navicon {
+    @media (max-width: 1024px) {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: $primary-color;
+      position: relative;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: $primary-color;
+      }
+
+      &::before {
+        top: -8px;
+      }
+
+      &::after {
+        bottom: -8px;
+      }
+    }
+  }
 }
 
 /* ===== Hero Section ===== */
