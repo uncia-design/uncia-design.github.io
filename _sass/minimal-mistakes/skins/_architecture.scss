@@ -296,6 +296,18 @@ pre {
   }
 }
 
+/* Logo sizing */
+.site-logo {
+  img {
+    max-height: 50px;
+    width: auto;
+
+    @media (max-width: $medium-screen) {
+      max-height: 40px;
+    }
+  }
+}
+
 .site-title {
   font-size: 1.25rem;
   font-weight: $heading-font-weight-bold;
