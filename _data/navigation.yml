@@ -1,6 +1,15 @@
 main:
   - title: "Projects"
     url: /projects/
+    children:
+      - title: "All"
+        url: /projects/
+      - title: "Residential"
+        url: /projects/?filter=residential
+      - title: "Commercial"
+        url: /projects/?filter=commercial
+      - title: "Institutional"
+        url: /projects/?filter=institutional
   - title: "About"
     url: /about/
   - title: "Data & Dashboards"
