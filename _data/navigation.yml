@@ -4,12 +4,14 @@ main:
     children:
       - title: "All"
         url: /projects/
+      - title: "Education"
+        url: /projects/?filter=education
+      - title: "Culture"
+        url: /projects/?filter=culture
       - title: "Residential"
         url: /projects/?filter=residential
-      - title: "Commercial"
-        url: /projects/?filter=commercial
-      - title: "Institutional"
-        url: /projects/?filter=institutional
+      - title: "Remodel"
+        url: /projects/?filter=remodel
   - title: "About"
     url: /about/
   - title: "Data & Dashboards"
