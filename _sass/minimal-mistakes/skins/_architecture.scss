@@ -326,6 +326,7 @@ pre {
   flex: 1;
   justify-content: flex-end;
 
+  /* Desktop navigation - visible on large screens */
   .visible-links {
     display: flex;
     list-style: none;
@@ -339,7 +340,7 @@ pre {
       font-size: 0.9rem;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
       display: none;
     }
 
@@ -361,7 +362,7 @@ pre {
         }
       }
 
-      /* Dropdown submenu */
+      /* Dropdown submenu - Desktop */
       .submenu {
         display: none;
         position: absolute;
@@ -415,7 +416,7 @@ pre {
         }
       }
 
-      /* Show submenu on hover */
+      /* Show submenu on hover - desktop only */
       &:hover .submenu,
       &:focus-within .submenu {
         display: block;
@@ -423,32 +424,30 @@ pre {
     }
   }
 
-  .hidden-links {
-    @media (min-width: 1025px) {
-      display: none !important;
-    }
-  }
-
-  /* Show hamburger menu on mobile/tablet */
+  /* Mobile hamburger toggle - hidden on desktop */
   .greedy-nav__toggle {
-    @media (max-width: 1024px) {
-      display: block !important;
-      position: relative;
-      height: 26px;
-      border: 0;
-      outline: none;
-      background-color: transparent;
-      cursor: pointer;
-      padding: 0;
+    display: none;
+    position: relative;
+    height: 26px;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+
+    @media (max-width: 768px) {
+      display: block;
 
       &.hidden {
-        display: block !important;
+        display: block;
       }
     }
   }
 
   .navicon {
-    @media (max-width: 1024px) {
+    display: none;
+
+    @media (max-width: 768px) {
       display: block;
       width: 26px;
       height: 2px;
@@ -473,6 +472,76 @@ pre {
         bottom: -8px;
       }
     }
+  }
+
+  /* Mobile dropdown menu */
+  .hidden-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: $background-color;
+    border: 1px solid $border-color;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    z-index: 1000;
+    border-radius: 4px;
+
+    @media (min-width: 769px) {
+      display: none !important;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    /* When menu is open (hidden class removed) */
+    &:not(.hidden) {
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+
+    li {
+      margin: 0;
+
+      a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        color: $primary-color;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: rgba($primary-color, 0.05);
+          color: $accent-color;
+        }
+      }
+
+      /* Nested submenu items in mobile */
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        
+        li a {
+          padding-left: 2.5rem;
+          font-size: 0.9rem;
+          color: $text-color;
+        }
+      }
+    }
+  }
+}
+
+/* Hide Projects submenu on projects page (filters shown instead) */
+body.layout--projects-showcase {
+  .masthead__menu-item.has-children .submenu {
+    display: none !important;
   }
 }
 
