@@ -31,8 +31,8 @@ layout: archive
     {% for project in entries %}
     {% assign project_category = project.filter_tag | default: "all" %}
     
-    <div class="project-showcase-item" data-category="{{ project_category }}">
-      <div class="project-showcase-image">
+    <div class="project-showcase-item" data-category="{{ project_category }}" data-url="{{ project.url | relative_url }}">
+      <a href="{{ project.url | relative_url }}" class="project-showcase-image">
         {% if project.hero_image %}
           <!-- Lazy loading image trio -->
           <img class="project-img tiny" src="{{ project.hero_image | relative_url }}?tr=h-6" alt="{{ project.title }}">
@@ -41,7 +41,7 @@ layout: archive
         {% else %}
           <img src="/assets/images/projects/placeholder-project-hero.svg" alt="Project placeholder">
         {% endif %}
-      </div>
+      </a>
       
       <div class="project-showcase-info">
         <!-- Project Logo -->
@@ -52,7 +52,7 @@ layout: archive
         {% endif %}
         
         <!-- Project Title -->
-        <h2 class="showcase-title">{{ project.title }}</h2>
+        <h2 class="showcase-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
         
         <!-- Project Location -->
         {% if project.location %}
@@ -241,7 +241,8 @@ layout: archive
     }
   }
 
-  .project-showcase-image {
+  a.project-showcase-image {
+    display: block;
     position: relative;
     overflow: hidden;
     grid-column: 2;
@@ -249,6 +250,13 @@ layout: archive
     width: 400px;
     cursor: pointer;
     flex-shrink: 0;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
 
     @media (max-width: 1024px) {
       grid-column: 1;
@@ -309,6 +317,16 @@ layout: archive
     overflow-y: visible;
     padding-top: 1rem;
     align-self: start;
+
+    .showcase-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #2c3e50;
+      }
+    }
 
     @media (max-width: 1024px) {
       grid-column: 1;
