@@ -311,6 +311,7 @@ pre {
       display: flex;
       align-items: center;
       gap: 1rem;
+      position: relative;
     }
   }
 
@@ -439,19 +440,28 @@ body.layout--projects-showcase .masthead__submenu[data-parent="projects"] {
   }
 }
 
-/* Hamburger toggle - always visible */
+/* Hamburger toggle - only visible on small screens */
 .greedy-nav__toggle {
-  display: block !important;
-  position: relative;
-  height: 26px;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
   border: 0;
   outline: none;
   background-color: transparent;
   cursor: pointer;
-  padding: 0;
+  padding: 0 1rem;
+  z-index: 1002;
 
-  &.hidden {
-    display: block !important;
+  /* Show hamburger on small screens when nav is hidden */
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    top: 1.25rem;
+    right: 1rem;
+    height: auto;
+    padding: 0;
   }
 
   .navicon {
@@ -498,18 +508,20 @@ body.layout--projects-showcase .masthead__submenu[data-parent="projects"] {
 
 /* Hidden links dropdown (hamburger menu) */
 .hidden-links {
-  position: absolute;
-  top: 100%;
-  right: 0;
+  position: fixed;
+  top: 80px;
+  right: 1rem;
   background: $background-color;
   border: 1px solid $border-color;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   min-width: 220px;
   list-style: none;
   margin: 0;
   padding: 0.5rem 0;
-  z-index: 1000;
+  z-index: 1001;
   border-radius: 4px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 
   &.hidden {
     display: none;
