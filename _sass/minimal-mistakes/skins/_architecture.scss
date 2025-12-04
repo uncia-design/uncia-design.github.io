@@ -285,14 +285,125 @@ pre {
   .masthead__inner-wrap {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 0 2rem;
 
     @media (max-width: $medium-screen) {
-      padding: 1rem;
+      padding: 0 1rem;
     }
+  }
+
+  /* Top row: Logo, Title, Hamburger */
+  .masthead__header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid $border-color;
+
+    .site-logo {
+      margin-right: 1rem;
+    }
+
+    .site-title {
+      flex: 1;
+    }
+
+    .masthead__header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  /* Navigation row: Main links */
+  .masthead__menu {
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: center;
+
+    /* Hide on small screens - use hamburger instead */
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  /* Submenu row: Categories below main nav */
+  .masthead__submenu {
+    padding: 0.5rem 0;
+    border-top: 1px solid $border-color;
+    display: flex;
+    justify-content: center;
+
+    /* Hide on small screens - use hamburger instead */
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    .submenu-row {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: 1200px) {
+        gap: 1.5rem;
+      }
+
+      li {
+        margin: 0;
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          text-decoration: none;
+          color: $text-color;
+          font-size: 0.875rem;
+          font-weight: 500;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+
+          .dot {
+            width: 5px;
+            height: 5px;
+            background-color: transparent;
+            border: 1px solid $border-color;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+          }
+
+          &:hover {
+            color: $accent-color;
+            
+            .dot {
+              background-color: $accent-color;
+              border-color: $accent-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Hide submenu row by default on all pages */
+.masthead__submenu {
+  display: none !important;
+
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+/* Show submenu row ONLY on projects page */
+body.layout--projects-showcase .masthead__submenu[data-parent="projects"] {
+  display: flex !important;
+
+  @media (max-width: 768px) {
+    display: none !important;
   }
 }
 
@@ -315,18 +426,147 @@ pre {
   text-decoration: none;
   transition: color 0.3s ease;
 
+  .site-subtitle {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: $text-color;
+    margin-top: 0.25rem;
+  }
+
   &:hover {
     color: $accent-color;
+  }
+}
+
+/* Hamburger toggle - always visible */
+.greedy-nav__toggle {
+  display: block !important;
+  position: relative;
+  height: 26px;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+
+  &.hidden {
+    display: block !important;
+  }
+
+  .navicon {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: $primary-color;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $primary-color;
+      transition: transform 0.2s ease;
+    }
+
+    &::before {
+      top: -8px;
+    }
+
+    &::after {
+      bottom: -8px;
+    }
+  }
+
+  &.close .navicon {
+    background: transparent;
+
+    &::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+  }
+}
+
+/* Hidden links dropdown (hamburger menu) */
+.hidden-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: $background-color;
+  border: 1px solid $border-color;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  z-index: 1000;
+  border-radius: 4px;
+
+  &.hidden {
+    display: none;
+  }
+
+  > li {
+    margin: 0;
+
+    > a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      color: $primary-color;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+
+      &:hover {
+        background: rgba($primary-color, 0.05);
+        color: $accent-color;
+      }
+    }
+
+    /* Mobile submenu */
+    .submenu-mobile {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background: rgba($primary-color, 0.02);
+
+      li {
+        margin: 0;
+
+        a {
+          display: block;
+          padding: 0.6rem 1.5rem 0.6rem 2.5rem;
+          text-decoration: none;
+          color: $text-color;
+          font-size: 0.9rem;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: rgba($primary-color, 0.05);
+            color: $accent-color;
+          }
+        }
+      }
+    }
   }
 }
 
 .greedy-nav {
   display: flex;
   align-items: center;
-  flex: 1;
-  justify-content: flex-end;
+  position: relative;
 
-  /* Desktop navigation - visible on large screens */
+  /* Visible navigation links - horizontal menu */
   .visible-links {
     display: flex;
     list-style: none;
@@ -340,10 +580,6 @@ pre {
       font-size: 0.9rem;
     }
 
-    @media (max-width: 768px) {
-      display: none;
-    }
-
     > li {
       position: relative;
       
@@ -355,6 +591,7 @@ pre {
         position: relative;
         padding: 0.5rem 0;
         display: block;
+        white-space: nowrap;
 
         &:hover,
         &.active {
@@ -362,186 +599,11 @@ pre {
         }
       }
 
-      /* Dropdown submenu - Desktop */
+      /* Hide old dropdown submenu - now using submenu row */
       .submenu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: $background-color;
-        border: 1px solid $border-color;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        min-width: 180px;
-        list-style: none;
-        margin: 0;
-        padding: 0.5rem 0;
-        z-index: 1000;
-        border-radius: 4px;
-
-        li {
-          margin: 0;
-
-          a {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem 1.25rem;
-            text-decoration: none;
-            color: $text-color;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-
-            .dot {
-              width: 5px;
-              height: 5px;
-              background-color: transparent;
-              border: 1px solid $border-color;
-              border-radius: 50%;
-              transition: all 0.2s ease;
-              flex-shrink: 0;
-            }
-
-            &:hover {
-              background: rgba($primary-color, 0.05);
-              color: $accent-color;
-              
-              .dot {
-                background-color: $accent-color;
-                border-color: $accent-color;
-              }
-            }
-          }
-        }
-      }
-
-      /* Show submenu on hover - desktop only */
-      &:hover .submenu,
-      &:focus-within .submenu {
-        display: block;
+        display: none !important;
       }
     }
-  }
-
-  /* Mobile hamburger toggle - hidden on desktop */
-  .greedy-nav__toggle {
-    display: none;
-    position: relative;
-    height: 26px;
-    border: 0;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 0;
-
-    @media (max-width: 768px) {
-      display: block;
-
-      &.hidden {
-        display: block;
-      }
-    }
-  }
-
-  .navicon {
-    display: none;
-
-    @media (max-width: 768px) {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: $primary-color;
-      position: relative;
-
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: $primary-color;
-      }
-
-      &::before {
-        top: -8px;
-      }
-
-      &::after {
-        bottom: -8px;
-      }
-    }
-  }
-
-  /* Mobile dropdown menu */
-  .hidden-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: $background-color;
-    border: 1px solid $border-color;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    list-style: none;
-    margin: 0;
-    padding: 0.5rem 0;
-    z-index: 1000;
-    border-radius: 4px;
-
-    @media (min-width: 769px) {
-      display: none !important;
-    }
-
-    &.hidden {
-      display: none;
-    }
-
-    /* When menu is open (hidden class removed) */
-    &:not(.hidden) {
-      @media (max-width: 768px) {
-        display: block;
-      }
-    }
-
-    li {
-      margin: 0;
-
-      a {
-        display: block;
-        padding: 0.75rem 1.5rem;
-        text-decoration: none;
-        color: $primary-color;
-        font-weight: 500;
-        transition: all 0.2s ease;
-
-        &:hover {
-          background: rgba($primary-color, 0.05);
-          color: $accent-color;
-        }
-      }
-
-      /* Nested submenu items in mobile */
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        
-        li a {
-          padding-left: 2.5rem;
-          font-size: 0.9rem;
-          color: $text-color;
-        }
-      }
-    }
-  }
-}
-
-/* Hide Projects submenu on projects page (filters shown instead) */
-body.layout--projects-showcase {
-  .masthead__menu-item.has-children .submenu {
-    display: none !important;
   }
 }
 
